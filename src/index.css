@@ -1,0 +1,208 @@
+@import "tailwindcss";
+@import "fancy-ui-react/tailwind.css";
+
+@theme {
+  /* A shell reads in one typeface: the body is the terminal. */
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, "JetBrains Mono", monospace;
+  --font-sans: var(--font-mono);
+
+  --color-ink: #080c09;
+  --color-surface: #0d1410;
+  --color-surface-2: #121b15;
+  --color-line: #1f2b23;
+  --color-line-soft: #17211a;
+  --color-cream: #dce6cf;
+  --color-muted: #9db095;
+  --color-pulse: #9ddc6b;
+  --color-pulse-deep: #6aa844;
+  --color-violet: #a8d8c4;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: color-mix(in oklab, var(--color-pulse) 32%, transparent);
+  color: var(--color-cream);
+}
+
+/* A quiet grid that hints at a plot plan without becoming a pattern. */
+.plot-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--color-line) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-line) 55%, transparent) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(70% 60% at 50% 0%, black, transparent 78%);
+}
+
+.hairline {
+  border: 1px solid var(--color-line);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ------------------------------------------------------------------------- */
+/* HTML 2.0 mode — the era switch, a reset in the opposite direction.        */
+/* A reset in the opposite direction: strip the modern layer on every         */
+/* element, then let the browser's own stylesheet show through.               */
+/* ------------------------------------------------------------------------- */
+html[data-era='1996'] {
+  color-scheme: light;
+  background: #fff;
+}
+
+html[data-era='1996'] body {
+  margin: 0;
+  padding: 1.25em;
+  background: #fff !important;
+  color: #000 !important;
+  font-family: 'Times New Roman', Times, serif !important;
+  font-size: 16px !important;
+  line-height: 1.3 !important;
+}
+
+html[data-era='1996'] * {
+  display: revert !important;
+  position: static !important;
+  max-width: none !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  color: #000 !important;
+  font-family: inherit !important;
+  font-size: medium !important;
+  font-weight: normal !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  text-decoration: none !important;
+  line-height: 1.3 !important;
+}
+
+html[data-era='1996'] h1,
+html[data-era='1996'] h2,
+html[data-era='1996'] h3,
+html[data-era='1996'] h4 {
+  font-weight: bold !important;
+  margin: 0.9em 0 0.4em !important;
+}
+
+html[data-era='1996'] h1 { font-size: 1.8em !important; }
+html[data-era='1996'] h2 { font-size: 1.35em !important; }
+html[data-era='1996'] h3 { font-size: 1.15em !important; }
+
+html[data-era='1996'] p,
+html[data-era='1996'] ul,
+html[data-era='1996'] ol,
+html[data-era='1996'] table,
+html[data-era='1996'] blockquote,
+html[data-era='1996'] pre,
+html[data-era='1996'] figure {
+  margin: 0.7em 0 !important;
+}
+
+html[data-era='1996'] ul { list-style: disc outside !important; padding-left: 1.6em !important; }
+html[data-era='1996'] ol { list-style: decimal outside !important; padding-left: 1.6em !important; }
+html[data-era='1996'] li { display: list-item !important; }
+
+html[data-era='1996'] a { color: #0000ee !important; text-decoration: underline !important; }
+html[data-era='1996'] a:visited { color: #551a8b !important; }
+
+html[data-era='1996'] code,
+html[data-era='1996'] pre,
+html[data-era='1996'] samp,
+html[data-era='1996'] kbd {
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 0.95em !important;
+}
+
+html[data-era='1996'] pre { white-space: pre !important; overflow-x: auto !important; }
+
+html[data-era='1996'] table { border-collapse: collapse !important; }
+html[data-era='1996'] th,
+html[data-era='1996'] td { border: 1px solid #000 !important; padding: 2px 6px !important; text-align: left !important; }
+html[data-era='1996'] th { font-weight: bold !important; }
+
+html[data-era='1996'] blockquote { margin-left: 2em !important; }
+html[data-era='1996'] hr { border-top: 1px solid #000 !important; margin: 1em 0 !important; }
+html[data-era='1996'] strong,
+html[data-era='1996'] b { font-weight: bold !important; }
+html[data-era='1996'] em,
+html[data-era='1996'] i { font-style: italic !important; }
+html[data-era='1996'] img { max-width: 100% !important; }
+
+html[data-era='1996'] button {
+  border: 1px solid #000 !important;
+  padding: 1px 4px !important;
+  background: #eee !important;
+}
+
+/* Decoration does not survive the reset; that is the point of the reset. */
+html[data-era='1996'] svg,
+html[data-era='1996'] .plot-grid { display: none !important; }
+
+/* ------------------------------------------------------------------------- */
+/* Shell furniture.                                                          */
+/* A prompt is a glyph and a colour, not an animation: the motion budget is   */
+/* the reader's, so the cursor is static and only the palette says "terminal".*/
+/* ------------------------------------------------------------------------- */
+.term-prompt::before {
+  content: "$ ";
+  color: var(--color-pulse);
+  user-select: none;
+}
+
+.term-caret {
+  display: inline-block;
+  width: 0.6ch;
+  background-color: var(--color-pulse);
+  color: transparent;
+  user-select: none;
+}
+
+.term-path {
+  color: var(--color-violet);
+}
+
+.term-dim {
+  color: var(--color-muted);
+}
+
+.term-rule {
+  border: 0;
+  border-top: 1px dashed var(--color-line);
+}
+
+/* A window chrome for a fenced block that is meant to be typed. */
+.term-frame {
+  border: 1px solid var(--color-line);
+  background-color: var(--color-surface);
+  border-radius: 0.5rem;
+}
+.term-frame::before {
+  content: attr(data-host);
+  display: block;
+  padding: 0.35rem 0.75rem;
+  border-bottom: 1px solid var(--color-line-soft);
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
