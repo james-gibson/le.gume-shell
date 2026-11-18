@@ -1,5 +1,5 @@
 import { ToggleGroup, ToggleGroupItem } from 'fancy-ui-react'
-import { useMotion, type MotionMode } from '../lib/motion'
+import { MODES, useMotion, type MotionMode } from '../lib/motion'
 
 const OPTIONS: { value: MotionMode; label: string; title: string }[] = [
   { value: 'still', label: 'Still', title: 'No ambient motion — the ladder’s rung 0–1 default' },
@@ -27,7 +27,7 @@ export function MotionToggle() {
         label="Motion preference"
         disabled={reduced}
       >
-        {OPTIONS.map((option) => (
+        {OPTIONS.filter((option) => MODES.includes(option.value)).map((option) => (
           <ToggleGroupItem key={option.value} value={option.value} label={option.title}>
             {option.label}
           </ToggleGroupItem>

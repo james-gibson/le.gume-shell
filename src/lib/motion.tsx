@@ -31,6 +31,16 @@ import { getSeed } from './seeds'
  */
 export type MotionMode = 'still' | 'calm' | 'full'
 
+/**
+ * The modes this site actually implements.
+ *
+ * A copy of the seed that never added a `full`-only effect is still offering a
+ * control for it, and the control does nothing — which is worse than not having
+ * it. Declaring the modes here lets the toggle offer exactly these, so the
+ * control cannot lie about what the site does.
+ */
+export const MODES: MotionMode[] = ['still', 'calm']
+
 const STORAGE_KEY = 'legume.motion'
 
 type MotionState = {
